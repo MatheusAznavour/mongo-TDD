@@ -10,10 +10,9 @@ async function pingDb(){
     try {
         await client.connect();
         const result = await client.db("admin").command({ ping: 1 });
-        console.log("Pinged successfully");
-        return result
+        return result;
     } catch(err){
-        console.log(err)
+        return console.log(err);
     }
 };
 
@@ -21,4 +20,4 @@ pingDb();
 
 export {
     database as db
-}
+};

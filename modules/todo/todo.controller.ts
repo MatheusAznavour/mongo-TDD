@@ -33,7 +33,7 @@ async function postTodo(req: Request, res: Response){
     }
 
     res.status(200).json({
-        message: "POST"
+        title, done, difficulty_level: diff
     });
 };
 
