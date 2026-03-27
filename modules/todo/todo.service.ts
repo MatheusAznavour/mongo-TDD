@@ -23,12 +23,20 @@ async function insertTodo(title: string, done: boolean, diff: number) {
 };
 
 async function updateTodo(id: string, title: string, done: boolean, diff: number) {
-    const result = await todos.updateOne({_id: new ObjectId(id)}, {$set: {title, done, difficulty_level: diff}});
+    if(id){
+        const result = await todos.updateOne({_id: new ObjectId(id)}, {$set: {title, done, difficulty_level: diff}});
+        return result;
+    };
+    const result = await todos.updateOne({title}, {$set: {title, done, difficulty_level: diff}});
     return result;
 };
 
-async function deleteTodo(id: string) {
-    const result = await todos.deleteOne({_id: new ObjectId(id)});
+async function deleteTodo(id: string, title: string) {
+    if(id){
+        const result = await todos.deleteOne({_id: new ObjectId(id)});
+        return result;
+    };
+    const result = await todos.deleteOne({title});
     return result;
 };
 

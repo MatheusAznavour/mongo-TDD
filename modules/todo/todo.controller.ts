@@ -54,9 +54,9 @@ async function updateTodo(req: Request, res: Response){
 };
 
 async function deleteTodo(req: Request, res: Response){
-    const { id } = req.body;
+    const { id, title } = req.body;
     try {
-        await todoService.deleteTodo(id);
+        await todoService.deleteTodo(id, title);
     } catch(err){
         return res.status(500).json("Could not perfom that action");
     }
